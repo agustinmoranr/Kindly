@@ -4,7 +4,7 @@
   "description": "API para una app que gestina libros.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "Javascript",
@@ -13,5 +13,8 @@
     "MongoDB"
   ],
   "author": "Agustin_Moran",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.17.1"
+  }
 }
