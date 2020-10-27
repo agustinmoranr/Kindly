@@ -1,0 +1,17 @@
+{
+  "name": "kindly-backend",
+  "version": "1.0.0",
+  "description": "API para una app que gestina libros.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Javascript",
+    "Node",
+    "Express",
+    "MongoDB"
+  ],
+  "author": "Agustin_Moran",
+  "license": "MIT"
+}
