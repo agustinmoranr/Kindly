@@ -1,11 +1,9 @@
 const express = require('express');
-
+const router = require('./utils/routes');
 const app = express();
 const port = 3000;
 
-app.use('/', function(req, res) {
-  res.send('Hola mundo express')
-})  
+router(app);  
 
 app.listen(port, function () {
   console.log('Servidor inicializado en el puerto ' + port);
