@@ -48,7 +48,6 @@ async function get (req, res) {
 }
 
 async function create (req, res) {
-  console.log(req.body)
   await controller.createBook(req.body)
     .then(book => {
       response.success(req, res, book, 201)

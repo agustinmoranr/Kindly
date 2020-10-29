@@ -1,4 +1,4 @@
-let books = []
+let books = require('../../db/dbMock.js')
 
 function listBooks() {
   return new Promise ((resolve, reject) => {
@@ -21,19 +21,17 @@ function getBook(booId) {
 
 function createBook(bookData) {
   return new Promise ((resolve, reject) => {
-    console.log(bookData)
     if(!bookData) {
       return reject('Error en la creacion')
     }
 
-    let myBook = {
-      bookData,
-      completed: false
-    }
+    //add book status
+    bookData.completed = false
 
-    books.push(myBook)
+    //
+    books.push(bookData)
 
-    resolve(books)
+    resolve(books[books.length -1])
   })
 }
 

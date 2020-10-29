@@ -8,6 +8,8 @@ app.use(express.urlencoded({ extended: true }));
 
 router(app);  
 
+app.use('/app', express.static('public'))
+
 app.listen(port, function () {
   console.log('Servidor inicializado en el puerto ' + port);
 });
