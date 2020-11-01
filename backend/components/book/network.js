@@ -25,6 +25,7 @@ const upload = multer({
 router.get('/', list)
 router.get('/:id', get)
 router.post('/', upload, create)
+router.delete('/:id', remove)
 
 //Network
 async function list (req, res){
@@ -48,7 +49,19 @@ async function get (req, res) {
 }
 
 async function create (req, res) {
-  await controller.createBook(req.body)
+  const where = req.query.where
+  await controller.createBook(req.body, where)
+    .then(book => {
+      response.success(req, res, book, 201)
+    })
+    .catch(error => {
+      response.error(req, res, 'Internal Error', 500, error)
+    }) 
+}
+
+async function remove (req, res) {
+  const where = req.query.where
+  await controller.deleteBook(req.params.id, where)
     .then(book => {
       response.success(req, res, book, 201)
     })

@@ -1,37 +1,73 @@
-let books = require('../../db/dbMock.js')
+let db = require('../../db/dbMock.js')
 
 function listBooks() {
   return new Promise ((resolve, reject) => {
-    if(books.length === 0) {
-      reject('No hay usuarios listados')
+    if(db.books.length === 0) {
+      return reject('No hay usuarios listados')
     }
-    resolve(books)
+    resolve(db)
   })
 }
 
-function getBook(booId) {
+function getBook(bookId) {
   return new Promise((resolve, reject) => {
     if (!bookId) {
       return reject('[Error Controller]: Invalid book id')
     }
 
-    resolve(books[0])
+    resolve(db.books[bookId -1])
   })
 }
 
-function createBook(bookData) {
-  return new Promise ((resolve, reject) => {
+function createBook(bookData, where) {
+  return new Promise (async (resolve, reject) => {
     if(!bookData) {
       return reject('Error en la creacion')
     }
 
     //add book status
     bookData.completed = false
+    bookData.id = bookData.id ? bookData.id : db['books'].length + 1
+    
+    //insert 
+    switch (where) {
+      case 'favorites':
+        db[where].push(bookData)
+      break
+      case 'read':
+        db[where].push(bookData)
+      break
+      default:
+        db[where].push(bookData)
+        break
+      }
+      
+      resolve(db[where][db[where].length -1])
+  })
+}
 
-    //
-    books.push(bookData)
+function deleteBook(id, where) {
+  return new Promise (async (resolve, reject) => {
+    if(!id) {
+      return reject('Error en la creacion')
+    }
 
-    resolve(books[books.length -1])
+    //remove
+    switch (where) {
+      case 'favorites':
+        let favoriteDeleted = db[where].filter(element => element.id !== id)
+        resolve(db[where] = favoriteDeleted)
+      break
+      case 'read':
+        let readDeleted = db[where].filter(element => element.id !== id)
+        resolve(db[where] = readDeleted )
+      break
+      default:
+        let deleted = db[where].filter(element => element.id !== id)
+        resolve(db[where] = deleted)
+      break
+    }
+
   })
 }
 
@@ -39,4 +75,5 @@ module.exports = {
   listBooks,
   getBook,
   createBook,
+  deleteBook,
 }
