@@ -16,6 +16,11 @@ const Home = async () => {
   if(books.body.favorites.length === 0) {
     existenFavorites = 'No hay libros en tu lista de favoritos';
   }
+  let existentRead = 'Favoritos';
+
+  if(books.body.read.length === 0) {
+    existentRead = 'No hay libros en tu lista de leídos';
+  }
 
   const view = 
   `
