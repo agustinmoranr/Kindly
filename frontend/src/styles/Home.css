@@ -1,0 +1,13 @@
+.Content {
+  background-color: #f4f4f4;
+}
+
+.BookSection {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 400px;
+  /* align-content: space-between; */
+  justify-content: space-around;
+}
+
