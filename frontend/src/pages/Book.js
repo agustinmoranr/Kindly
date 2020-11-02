@@ -1,5 +1,6 @@
 import getHash from '../utils/getHash';
 import getData from '../utils/getData';
+import addToList from '../utils/addToList';
 
 const content = document.getElementById('content');
 
@@ -26,13 +27,15 @@ const book = async() => {
           <li>Publicación: ${bookInfo.body.publication}</li>
         </ul>
         <div class="actions">
-          <button  class="material-icons">add_box</button>
-          <button id="read" class="material-icons">add_task</button>
+          <button id="favorites" type="button"  class="material-icons">add_box</button>
+          <button id="read" type="button" class="material-icons">add_task</button>
       </div>
       </div>
     </div>
   `
   }
+  ${document.getElementById('favorites').onclick = function(){addToList('favorites')}}
+  ${document.getElementById('read').onclick = function(){addToList('read')}}
   `
   return view
 }

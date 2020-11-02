@@ -9,14 +9,13 @@ const leidos = document.getElementById('leidos')
 
 const Home = async () => {
   let books = await getData()
-  console.log(books)
   
   let existenFavorites = 'Favoritos';
 
   if(books.body.favorites.length === 0) {
     existenFavorites = 'No hay libros en tu lista de favoritos';
   }
-  let existentRead = 'Favoritos';
+  let existentRead = 'Leídos';
 
   if(books.body.read.length === 0) {
     existentRead = 'No hay libros en tu lista de leídos';
@@ -37,7 +36,7 @@ const Home = async () => {
 
   ${leidos.innerHTML = 
   `
-  <h2>Leídos</h2>
+  <h2>${existentRead}</h2>
   <div class="BookSection">
   ${books.body.read.map(book => 
     BookItem(book)

@@ -28,6 +28,7 @@ function createBook(bookData, where) {
     //add book status
     bookData.completed = false
     bookData.id = bookData.id ? bookData.id : db['books'].length + 1
+    bookData.img = 'https://m.media-amazon.com/images/I/41cj3vv7mjL.jpg';
     
     //insert 
     switch (where) {
