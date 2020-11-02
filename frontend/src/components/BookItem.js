@@ -9,8 +9,13 @@ const BookItem = (book, id) => {
         <p class="main-info">${book.title}</p>
         <p class="main-info">${book.author}</p>
       </a>
-    </article>
+      <div class="actions">
+        <button id="fav" type="button"  class="material-icons">add_circle</button>
+        <button id="read" type="button" class="material-icons">add_task</button>
+      </div>
+      </article>
     `
+  
   return view;
 };
 

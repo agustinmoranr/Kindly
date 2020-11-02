@@ -1,12 +1,12 @@
-import getHash from './getHash';
 import getData from './getData';
 
 const API = 'http://localhost:3000/book'
 //const formData = new FormData()
 
-const addToList = async (where) => {
+const addToList = async (where, id) => {
   // get data from our book
-  const id = await getHash()
+  console.log(where)
+  console.log(id)
   const bookInfo = await getData(id)
 
   //buildURL

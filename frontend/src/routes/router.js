@@ -17,7 +17,6 @@ const router = async() => {
   
   let hash = await getHash();
   let route = await rutesHandler(hash)
-  console.log(route)
 
   let view = route ? routes[route] : NotFound
   

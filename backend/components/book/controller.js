@@ -53,18 +53,19 @@ function deleteBook(id, where) {
       return reject('Error en la creacion')
     }
 
+
     //remove
     switch (where) {
       case 'favorites':
-        let favoriteDeleted = db[where].filter(element => element.id !== id)
+        let favoriteDeleted = db[where].filter(element => element.id != id)
         resolve(db[where] = favoriteDeleted)
       break
       case 'read':
-        let readDeleted = db[where].filter(element => element.id !== id)
+        let readDeleted = db[where].filter(element => element.id != id)
         resolve(db[where] = readDeleted )
       break
       default:
-        let deleted = db[where].filter(element => element.id !== id)
+        let deleted = db[where].filter(element => element.id != id)
         resolve(db[where] = deleted)
       break
     }

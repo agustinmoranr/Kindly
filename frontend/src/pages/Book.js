@@ -1,13 +1,13 @@
 import getHash from '../utils/getHash';
 import getData from '../utils/getData';
 import addToList from '../utils/addToList';
-
+import deleteToList from '../utils/deleteToList';
 const content = document.getElementById('content');
 
 const book = async() => {
   let id = await getHash()
   let bookInfo = await getData(id)
-
+  console.log(id)
   const view = 
   `
   ${content.innerHTML = `
@@ -27,15 +27,19 @@ const book = async() => {
           <li>Publicación: ${bookInfo.body.publication}</li>
         </ul>
         <div class="actions">
-          <button id="favorites" type="button"  class="material-icons">add_box</button>
-          <button id="read" type="button" class="material-icons">add_task</button>
-      </div>
+          <button id="fav" type="button"  class="material-icons">add_circle</button>
+          <button id="read" type="button" class="material-icons">check_box</button>
+          <button id="delete" type="button" class="material-icons">delete</button>
+          <button id="unread" type="button" class="material-icons">check_box_outline_blank</button>
+        </div>
       </div>
     </div>
   `
   }
-  ${document.getElementById('favorites').onclick = function(){addToList('favorites')}}
-  ${document.getElementById('read').onclick = function(){addToList('read')}}
+  ${document.getElementById('fav').onclick = function(){addToList('favorites', id)}}
+  ${document.getElementById('read').onclick = function(){addToList('read', id)}}
+  ${document.getElementById('delete').onclick = function(){deleteToList('favorites', id)}}
+  ${document.getElementById('unread').onclick = function(){deleteToList('read', id)}}
   `
   return view
 }
